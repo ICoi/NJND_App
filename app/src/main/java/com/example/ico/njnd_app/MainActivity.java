@@ -12,8 +12,8 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Test start~!
-        // test 2~~~
-        
+        // test 2~~~sdf
+
         setContentView(R.layout.activity_main);
     }
 
