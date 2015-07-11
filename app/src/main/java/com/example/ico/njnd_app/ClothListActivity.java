@@ -15,7 +15,7 @@ public class ClothListActivity extends ActionBarActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_cloth_list);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
