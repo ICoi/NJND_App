@@ -6,7 +6,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class MainActivity extends ActionBarActivity {
+/**
+ * Created by ICo on 2015-07-04.
+ */
+public class ClothListActivity extends ActionBarActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -14,7 +17,6 @@ public class MainActivity extends ActionBarActivity {
 
         setContentView(R.layout.activity_main);
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
