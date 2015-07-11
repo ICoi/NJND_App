@@ -1,9 +1,12 @@
 package com.example.ico.njnd_app;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 
 public class ContentPageActivity extends ActionBarActivity {
@@ -12,6 +15,7 @@ public class ContentPageActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_content_page);
+        setOnClickListener();
     }
 
     @Override
@@ -21,6 +25,17 @@ public class ContentPageActivity extends ActionBarActivity {
         return true;
     }
 
+    public void setOnClickListener()
+    {
+        Button btn = (Button)findViewById(R.id.btn_content_page_goNext);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ContentPageActivity.this,ReplyPageActivity.class);
+                startActivity(i);
+            }
+        });
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will

@@ -1,9 +1,12 @@
 package com.example.ico.njnd_app;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 
 public class ContentListActivity extends ActionBarActivity {
@@ -12,6 +15,7 @@ public class ContentListActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_content_list);
+        setOnClickListener();
     }
 
     @Override
@@ -19,6 +23,18 @@ public class ContentListActivity extends ActionBarActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_content_list, menu);
         return true;
+    }
+
+    public void setOnClickListener() {
+        Button btn = (Button)findViewById(R.id.btn_content_list_goNext);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ContentListActivity.this,ContentPageActivity.class);
+                startActivity(i);
+            }
+        });
+
     }
 
     @Override

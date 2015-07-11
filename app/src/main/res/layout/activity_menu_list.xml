@@ -19,7 +19,14 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Next"
-        android:id="@+id/btn_menu_list_goNext"
+        android:text="Content"
+        android:id="@+id/btn_menu_list_goContentList"
         android:layout_gravity="center_horizontal" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cloth"
+        android:id="@+id/btn_menu_list_goClothList"
+        android:layout_gravity="center_horizontal" />
+
 </LinearLayout>
