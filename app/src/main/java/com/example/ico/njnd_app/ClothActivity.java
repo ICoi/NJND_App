@@ -5,19 +5,42 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.GridLayout;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 
 
 public class ClothActivity extends ActionBarActivity {
 
+    Button[] btnWord = new Button[40];
+    LinearLayout linear;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cloth);
 
         setOnClickListener();
+
+        linear = (LinearLayout) findViewById(R.id.layout_cloth_wear_list);
+        for (int i = 0; i < btnWord.length; i++) {
+            btnWord[i] = new Button(this);
+            btnWord[i].setHeight(20);
+            btnWord[i].setWidth(10);
+            btnWord[i].setText(""+i);
+            btnWord[i].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // TODO Auto-generated method stub
+                }
+            });
+            linear.addView(btnWord[i]);
+        }
+
+
+
     }
 
     private void setOnClickListener(){
