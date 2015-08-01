@@ -1,11 +1,14 @@
 package com.example.ico.njnd_app;
 
+import android.app.ActionBar;
 import android.content.Intent;
+import android.support.v4.widget.SlidingPaneLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.TableRow;
@@ -20,20 +23,25 @@ public class MenuListActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        content = new Button[12];
-
-        GridLayout grid = new GridLayout(this);
-
-        for(int num = 0;num<12; num++) {
-            TableRow row = new TableRow(this);
-                content[num] = new Button(this);
-                content[num].setText(text[num % 3]);
-                content[num].setId(num);
-                content[num].setTextSize(10f);
-            row.addView(content[num], 30, 30);
-            grid.addView(row);
-        }
         setContentView(R.layout.activity_menu_list);
+        content = new Button[maxButtonNum];
+
+        GridLayout grid = (GridLayout)findViewById(R.id.gridLayout_activity_menu);
+
+        for(int num = 0;num<maxButtonNum; num++) {
+                content[num] = new Button(this);
+                content[num].setText(text[num % 2]);
+                content[num].setId(num);
+                content[num].setTextSize(20f);
+                content[num].setHeight(350);
+                content[num].setWidth(600);
+
+                /*GridLayout.Spec row = GridLayout.spec(num%2,1);
+                GridLayout.Spec col = GridLayout.spec(num%6,1);*/
+
+                grid.addView(content[num],new GridLayout.LayoutParams(GridLayout.spec(num/2,GridLayout.CENTER),GridLayout.spec(num%2,GridLayout.CENTER)));
+        }
+
 
     /*
         String text[] =  {"123","456","789"};
@@ -57,25 +65,17 @@ public class MenuListActivity extends ActionBarActivity {
 
     public void setOnClickListener()
     {
-        for(int i = 0 ; i < 12 ; i++) {
-            final String name = text[i%3];
+        for(int i = 0 ; i < maxButtonNum ; i++) {
+            final String name = text[i%2];
             content[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent in = new Intent(MenuListActivity.this, ContentListActivity.class);
                     in.putExtra("clickedContentName", name);
+                    startActivity(in);
                 }
             });
         }
-
-        Button btn = (Button)findViewById(R.id.btn_menu_list_goContentList);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                    Intent i = new Intent(MenuListActivity.this, ContentListActivity.class);
-                        startActivity(i);
-            }
-        });
         Button btn2 = (Button)findViewById(R.id.btn_menu_list_goClothList);
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override

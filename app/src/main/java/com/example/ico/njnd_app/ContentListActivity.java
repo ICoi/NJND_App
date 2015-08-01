@@ -7,14 +7,37 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.GridLayout;
 
 
 public class ContentListActivity extends ActionBarActivity {
-
+    private String contentID;
+    public String titles[];
+    public int maxButtonNum;
+    private Button content[];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        content = new Button[maxButtonNum];
         setContentView(R.layout.activity_content_list);
+        GridLayout grid = (GridLayout)findViewById(R.id.gridLayout_activity_content_list);
+
+        for(int num = 0;num<maxButtonNum; num++) {
+            content[num] = new Button(this);
+            content[num].setText(num);
+            content[num].setId(num);
+            content[num].setTextSize(20f);
+            content[num].setHeight(350);
+            content[num].setWidth(600);
+
+                /*GridLayout.Spec row = GridLayout.spec(num%2,1);
+                GridLayout.Spec col = GridLayout.spec(num%6,1);*/
+
+            grid.addView(content[num],new GridLayout.LayoutParams(GridLayout.spec(num/2,GridLayout.CENTER),GridLayout.spec(num%2,GridLayout.CENTER)));
+        }
+
+
+
         setOnClickListener();
     }
 
