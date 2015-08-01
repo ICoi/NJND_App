@@ -1,9 +1,12 @@
 package com.example.ico.njnd_app;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 
 public class ClothListActivity extends ActionBarActivity {
@@ -12,6 +15,20 @@ public class ClothListActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cloth_list);
+
+
+        setOnClickListener();
+    }
+
+    void setOnClickListener(){
+        Button btn = (Button)findViewById(R.id.btn_cloth_list_goNext);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ClothListActivity.this, ClothActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
     @Override

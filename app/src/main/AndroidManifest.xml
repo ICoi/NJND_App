@@ -39,6 +39,10 @@
             android:name=".ReplyPageActivity"
             android:label="@string/title_activity_reply_page" >
         </activity>
+        <activity
+            android:name=".ClothActivity"
+            android:label="@string/title_activity_cloth" >
+        </activity>
     </application>
 
 </manifest>

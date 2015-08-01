@@ -9,4 +9,5 @@
     <string name="title_activity_content_page">ContentPageActivity</string>
     <string name="title_activity_menu_list">MenuListActivity</string>
     <string name="title_activity_reply_page">ReplyPageActivity</string>
+    <string name="title_activity_cloth">ClothActivity</string>
 </resources>
