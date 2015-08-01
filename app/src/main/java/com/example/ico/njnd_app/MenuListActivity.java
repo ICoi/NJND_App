@@ -7,14 +7,44 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.GridLayout;
+import android.widget.TableRow;
 
 
 public class MenuListActivity extends ActionBarActivity {
 
+    public int maxButtonNum = 12;
+    private Button content[];
+    private String text[] = {"123","345","456"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        content = new Button[12];
+
+        GridLayout grid = new GridLayout(this);
+
+        for(int num = 0;num<12; num++) {
+            TableRow row = new TableRow(this);
+                content[num] = new Button(this);
+                content[num].setText(text[num % 3]);
+                content[num].setId(num);
+                content[num].setTextSize(10f);
+            row.addView(content[num], 30, 30);
+            grid.addView(row);
+        }
         setContentView(R.layout.activity_menu_list);
+
+    /*
+        String text[] =  {"123","456","789"};
+
+        for (int i = 0 ; i < text.length; i++) {
+              this.text[i] = text[i];
+        }
+    */
+
+
+
         setOnClickListener();
     }
 
@@ -24,8 +54,20 @@ public class MenuListActivity extends ActionBarActivity {
         getMenuInflater().inflate(R.menu.menu_menu_list, menu);
         return true;
     }
+
     public void setOnClickListener()
     {
+        for(int i = 0 ; i < 12 ; i++) {
+            final String name = text[i%3];
+            content[i].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent in = new Intent(MenuListActivity.this, ContentListActivity.class);
+                    in.putExtra("clickedContentName", name);
+                }
+            });
+        }
+
         Button btn = (Button)findViewById(R.id.btn_menu_list_goContentList);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,6 +83,7 @@ public class MenuListActivity extends ActionBarActivity {
                 Intent i = new Intent(MenuListActivity.this,ClothListActivity.class);
                 startActivity(i);
             }
+
         });
     }
     @Override
