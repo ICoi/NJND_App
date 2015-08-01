@@ -6,43 +6,24 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.example.ico.njnd_app.ClothActivity">
 
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nexts"
-        android:id="@+id/btn_cloth_goNext"
-        android:layout_below="@+id/textView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="350dp"
         android:id="@+id/img_cloth_person_shape"
-        android:layout_below="@+id/btn_cloth_goNext"
-        android:layout_toRightOf="@+id/textView"
-        android:layout_toEndOf="@+id/textView"
         android:background="@mipmap/people_shape" />
 
     <ImageButton
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:id="@+id/imgbtn_cloth_head"
         android:background="@mipmap/cloth_bg"
-        android:layout_alignTop="@+id/img_cloth_person_shape"
-        android:layout_toRightOf="@+id/btn_cloth_goNext"
-        android:layout_toEndOf="@+id/btn_cloth_goNext"
-        android:layout_marginLeft="76dp"
-        android:layout_marginStart="76dp" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
     <ImageButton
-        android:layout_width="fill_parent"
+        android:layout_width="100dp"
         android:layout_height="200dp"
-        android:id="@+id/imgbtn_cloth_shirts"
+        android:id="@+id/imgbtn_cloth_coat"
         android:background="@mipmap/cloth_bg"
         android:layout_below="@+id/imgbtn_cloth_head"
         android:layout_alignLeft="@+id/img_cloth_person_shape"
@@ -51,12 +32,32 @@
         android:layout_alignEnd="@+id/img_cloth_person_shape" />
 
     <ImageButton
+        android:layout_width="80dp"
+        android:layout_height="200dp"
+        android:id="@+id/imgbtn_cloth_shirts"
+        android:background="@mipmap/cloth_bg"
+        android:layout_alignTop="@+id/imgbtn_cloth_coat"
+        android:layout_alignRight="@+id/imgbtn_cloth_head"
+        android:layout_alignEnd="@+id/imgbtn_cloth_head" />
+
+    <ImageButton
         android:layout_width="wrap_content"
-        android:layout_height="150dp"
+        android:layout_height="60dp"
         android:id="@+id/imgbtn_cloth_pants"
         android:background="@mipmap/cloth_bg"
-        android:layout_alignBottom="@+id/img_cloth_person_shape"
-        android:layout_alignRight="@+id/img_cloth_person_shape"
-        android:layout_alignEnd="@+id/img_cloth_person_shape"
-        android:layout_below="@+id/imgbtn_cloth_shirts" />
+        android:layout_below="@+id/imgbtn_cloth_coat"
+        android:layout_centerHorizontal="true" />
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/img_cloth_person_shape">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="800dp"
+        android:layout_height="match_parent"
+        android:id="@+id/layout_cloth_wear_list">
+    </LinearLayout>
+    </HorizontalScrollView>
 </RelativeLayout>
