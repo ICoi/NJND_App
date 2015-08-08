@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v4.widget.SlidingPaneLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,11 +31,13 @@ public class MenuListActivity extends ActionBarActivity {
 
         for(int num = 0;num<maxButtonNum; num++) {
                 content[num] = new Button(this);
-                content[num].setText(text[num % 2]);
+                content[num].setText(""+num);
                 content[num].setId(num);
                 content[num].setTextSize(20f);
-                content[num].setHeight(350);
-                content[num].setWidth(600);
+                content[num].setHeight(500);
+                content[num].setWidth(700);
+                content[num].setGravity(Gravity.CENTER);
+
 
                 /*GridLayout.Spec row = GridLayout.spec(num%2,1);
                 GridLayout.Spec col = GridLayout.spec(num%6,1);*/
