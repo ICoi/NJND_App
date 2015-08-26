@@ -36,7 +36,7 @@ public class ContentListActivity extends ActionBarActivity {
             content[num].setCompoundDrawablesWithIntrinsicBounds(null,top,null,null);
             content[num].setText("" + num);
             content[num].setId(num);
-            content[num].setBackground(this.getResources().getDrawable(R.mipmap.cloth_bg));
+            content[num].setBackground(this.getResources().getDrawable(R.mipmap.ic_launcher));
             content[num].setTextSize(20f);
             content[num].setHeight(500);
             content[num].setWidth(700);
