@@ -1,48 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="1">
 
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/img_content_title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="@mipmap/bg_title" />
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/img_content_title_bar"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/img_content_title"
+        android:layout_marginTop="10dp"
+        android:background="@mipmap/bg_title_bar"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Activity Content Page"
-        android:id="@+id/text_content_page_title"
+        android:text="Content Title"
+        android:id="@+id/text_content_title"
+        android:layout_below="@id/img_content_title_bar"
+        android:layout_marginTop="10dp"
         android:textSize="30dp"
         android:layout_gravity="center_horizontal" />
+
+    <ImageView
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        android:id="@+id/img_content_image"
+        android:layout_below="@id/text_content_title"
+        android:layout_marginTop="10dp"
+        android:background="@mipmap/ic_launcher"
+        android:layout_centerHorizontal="true" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Before"
-        android:id="@+id/btn_content_page_goBefore"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/img_content_title"
+        android:layout_alignStart="@+id/img_content_title" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Next"
         android:id="@+id/btn_content_page_goNext"
-        android:layout_gravity="center_horizontal" />
-
-    <ImageView
-        android:layout_width="171dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView"
-        android:layout_gravity="center_horizontal"
-        android:background="@mipmap/ic_launcher"
-        android:layout_weight="0.37" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/img_content_title"
+        android:layout_alignEnd="@+id/img_content_title" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView"
-        android:layout_gravity="center_horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/img_content_image"
+        android:layout_above="@id/btn_content_page_goNext"
         android:autoText="false"
-        android:maxLines="4"
-        android:lines="4"
-        android:text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."/>
+        android:maxLines="10"
+        android:lines="10"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."/>
 
 
-</LinearLayout>
+</RelativeLayout>
