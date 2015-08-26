@@ -1,25 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="1">
-    <TextView
+
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Activity Menu List"
-        android:id="@+id/text_menu_list_title"
-        android:textSize="30dp"
-        android:layout_gravity="center_horizontal" />
+        android:id="@+id/image_menu_list_title"
+        android:background="@mipmap/bg_title"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="81dp"
-        android:text="Cloth"
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/img_menu_list_title_bar"
+        android:background="@mipmap/bg_title_bar"
+        android:layout_below="@+id/image_menu_list_title"
+        android:layout_alignRight="@+id/btn_menu_list_goBefore"
+        android:layout_alignEnd="@+id/btn_menu_list_goBefore"
+        android:layout_marginTop="17dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/img_menu_list_title2"
+        android:background="@mipmap/menu_namjungnaedle_story"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="24dp"
+        android:layout_below="@+id/img_menu_list_title_bar"
+        android:layout_alignLeft="@+id/btn_menu_list_goClothList"
+        android:layout_alignStart="@+id/btn_menu_list_goClothList" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/img_menu_list_title3"
+        android:background="@mipmap/menu_men_story"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="35dp"
+        android:layout_centerVertical="true"
+        android:layout_below="@+id/btn_menu_list_goClothList"
+        android:layout_toRightOf="@+id/scrollView"
+        android:layout_toEndOf="@+id/scrollView" />
+
+    <ImageButton
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:id="@+id/btn_menu_list_goHotFashion"
+        android:layout_row="0"
+        android:layout_column="14"
+        android:background="@mipmap/menu_hot_fashion_btn"
+        android:layout_gravity="top|center_horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/img_menu_list_title2"
+        android:layout_centerHorizontal="true" />
+
+    <ImageButton
+        android:layout_width="300dp"
+        android:layout_height="70dp"
         android:id="@+id/btn_menu_list_goClothList"
         android:layout_row="0"
         android:layout_column="14"
-        android:layout_gravity="top|center_horizontal" />
+        android:background="@mipmap/menu_fitting_room_btn"
+        android:layout_gravity="top|center_horizontal"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/btn_menu_list_goHotFashion"
+        android:layout_alignLeft="@+id/btn_menu_list_goHotFashion"
+        android:layout_alignStart="@+id/btn_menu_list_goHotFashion" />
 
     <ScrollView
         android:layout_width="wrap_content"
@@ -27,7 +77,11 @@
         android:id="@+id/scrollView"
         android:layout_gravity="center_horizontal"
         android:textAlignment="center"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/img_menu_list_title3"
+        android:layout_alignLeft="@+id/btn_menu_list_goClothList"
+        android:layout_alignStart="@+id/btn_menu_list_goClothList">
 
         <GridLayout
             android:layout_width="wrap_content"
@@ -45,6 +99,9 @@
         android:layout_gravity="right"
         android:layout_row="18"
         android:layout_column="13"
-        android:layout_marginTop="40dp" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="45dp" />
 
-</LinearLayout>
+</RelativeLayout>
