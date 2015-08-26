@@ -1,7 +1,10 @@
 package com.example.ico.njnd_app;
 
 import android.app.ActionBar;
+import android.bluetooth.BluetoothClass;
 import android.content.Intent;
+import android.content.pm.ResolveInfo;
+import android.preference.PreferenceScreen;
 import android.support.v4.widget.SlidingPaneLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -38,8 +41,10 @@ public class MenuListActivity extends ActionBarActivity {
         for(int num = 0;num<maxButtonNum; num++) {
         layoutWord[num] = new ScrollableGridLayout(MenuListActivity.this, "com.example.ico.njnd_app.ContentListActivity");
             GridLayout.LayoutParams param =  new GridLayout.LayoutParams(GridLayout.spec(num / 2, GridLayout.CENTER),GridLayout.spec(num % 2, GridLayout.CENTER));
-            param.width = 400;
+            param.width = 520;
+            param.leftMargin = 20;
             param.height = 400;
+            param.bottomMargin = 10;
             linear.addView(layoutWord[num], param);
         }
 

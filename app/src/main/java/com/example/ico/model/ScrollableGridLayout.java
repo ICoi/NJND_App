@@ -39,8 +39,7 @@ public class ScrollableGridLayout extends RelativeLayout{
         btn.setScaleType(ImageView.ScaleType.FIT_XY);
         btn.setURL(testText.toString());
         btn.setLayoutParams(new MarginLayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-        btn.setMaxWidth(120);
-        btn.setMinimumWidth(120);
+        btn.setMinimumWidth(150);
         btn.setMaxHeight(120);
         btn.setMinimumHeight(120);
 
