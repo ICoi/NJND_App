@@ -38,13 +38,18 @@ public class ScrollableGridLayout extends RelativeLayout{
         btn.setBackground(this.getResources().getDrawable(R.mipmap.content_menu_cell_img));
         btn.setScaleType(ImageView.ScaleType.FIT_XY);
         btn.setURL(testText.toString());
+        btn.setLayoutParams(new MarginLayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
+        btn.setMaxWidth(120);
+        btn.setMinimumWidth(120);
+        btn.setMaxHeight(120);
+        btn.setMinimumHeight(120);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    Intent in = new Intent();
-                    in.setComponent(new ComponentName("com.example.ico.njnd_app", testText.toString()));
-                    context.startActivity(in);
+                Intent in = new Intent();
+                in.setComponent(new ComponentName("com.example.ico.njnd_app", testText.toString()));
+                context.startActivity(in);
             }
         });
         this.addView(btn);

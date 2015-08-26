@@ -13,6 +13,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TableRow;
 
 import com.example.ico.model.ScrollableGridLayout;
@@ -34,11 +37,10 @@ public class MenuListActivity extends ActionBarActivity {
         linear = (GridLayout)findViewById(R.id.gridLayout_activity_menu);
         for(int num = 0;num<maxButtonNum; num++) {
         layoutWord[num] = new ScrollableGridLayout(MenuListActivity.this, "com.example.ico.njnd_app.ContentListActivity");
-
-            linear.addView(layoutWord[num], new GridLayout.LayoutParams(
-                    GridLayout.spec(num / 2, GridLayout.CENTER),
-                    GridLayout.spec(num % 2, GridLayout.CENTER)
-            ));
+            GridLayout.LayoutParams param =  new GridLayout.LayoutParams(GridLayout.spec(num / 2, GridLayout.CENTER),GridLayout.spec(num % 2, GridLayout.CENTER));
+            param.width = 400;
+            param.height = 400;
+            linear.addView(layoutWord[num], param);
         }
 
 
