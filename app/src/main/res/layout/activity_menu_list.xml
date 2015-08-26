@@ -94,8 +94,8 @@
         android:fillViewport="true"
         android:layout_below="@id/img_menu_list_title3"
         android:layout_above="@id/btn_menu_list_goBefore"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_alignLeft="@id/btn_menu_list_goClothList"
+        android:layout_alignRight="@id/btn_menu_list_goClothList"
         android:layout_marginTop="10dp">
 
         <GridLayout
