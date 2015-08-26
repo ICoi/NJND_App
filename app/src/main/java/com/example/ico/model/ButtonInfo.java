@@ -2,13 +2,14 @@ package com.example.ico.model;
 
 import android.content.Context;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import org.w3c.dom.Text;
 
 /**
  * Created by user on 2015-08-15.
  */
-public class ButtonInfo extends Button {
+public class ButtonInfo extends ImageButton {
 
     private String URL;
 

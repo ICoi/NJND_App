@@ -1,11 +1,15 @@
 package com.example.ico.model;
 
+import android.annotation.TargetApi;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,6 +23,7 @@ import com.example.ico.njnd_app.R;
 public class ScrollableGridLayout extends RelativeLayout{
     LayoutInflater mInflater;
 
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     public ScrollableGridLayout(final Context context, final String testText)
     {
         super(context);
@@ -29,10 +34,10 @@ public class ScrollableGridLayout extends RelativeLayout{
         tv.setText(testText.toString());
 
         ButtonInfo btn = new ButtonInfo(context);
-        btn.setWidth(700);
-        btn.setHeight(500);
+
+        btn.setBackground(this.getResources().getDrawable(R.mipmap.content_menu_cell_img));
+        btn.setScaleType(ImageView.ScaleType.FIT_XY);
         btn.setURL(testText.toString());
-        btn.setGravity(Gravity.CENTER);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
