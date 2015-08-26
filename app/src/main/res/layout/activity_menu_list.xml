@@ -13,84 +13,6 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/img_menu_list_title_bar"
-        android:background="@mipmap/bg_title_bar"
-        android:layout_below="@+id/image_menu_list_title"
-        android:layout_alignRight="@+id/btn_menu_list_goBefore"
-        android:layout_alignEnd="@+id/btn_menu_list_goBefore"
-        android:layout_marginTop="17dp" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/img_menu_list_title2"
-        android:background="@mipmap/menu_namjungnaedle_story"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="24dp"
-        android:layout_below="@+id/img_menu_list_title_bar"
-        android:layout_alignLeft="@+id/btn_menu_list_goClothList"
-        android:layout_alignStart="@+id/btn_menu_list_goClothList" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/img_menu_list_title3"
-        android:background="@mipmap/menu_men_story"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="35dp"
-        android:layout_centerVertical="true"
-        android:layout_below="@+id/btn_menu_list_goClothList"
-        android:layout_toRightOf="@+id/scrollView"
-        android:layout_toEndOf="@+id/scrollView" />
-
-    <ImageButton
-        android:layout_width="300dp"
-        android:layout_height="70dp"
-        android:id="@+id/btn_menu_list_goHotFashion"
-        android:layout_row="0"
-        android:layout_column="14"
-        android:background="@mipmap/menu_hot_fashion_btn"
-        android:layout_gravity="top|center_horizontal"
-        android:layout_marginTop="5dp"
-        android:layout_below="@+id/img_menu_list_title2"
-        android:layout_centerHorizontal="true" />
-
-    <ImageButton
-        android:layout_width="300dp"
-        android:layout_height="70dp"
-        android:id="@+id/btn_menu_list_goClothList"
-        android:layout_row="0"
-        android:layout_column="14"
-        android:background="@mipmap/menu_fitting_room_btn"
-        android:layout_gravity="top|center_horizontal"
-        android:layout_marginTop="15dp"
-        android:layout_below="@+id/btn_menu_list_goHotFashion"
-        android:layout_alignLeft="@+id/btn_menu_list_goHotFashion"
-        android:layout_alignStart="@+id/btn_menu_list_goHotFashion" />
-
-    <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/scrollView"
-        android:layout_gravity="center_horizontal"
-        android:textAlignment="center"
-        android:fillViewport="true"
-        android:layout_marginTop="20dp"
-        android:layout_below="@+id/img_menu_list_title3"
-        android:layout_alignLeft="@+id/btn_menu_list_goClothList"
-        android:layout_alignStart="@+id/btn_menu_list_goClothList">
-
-        <GridLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id = "@+id/gridLayout_activity_menu"
-            android:alignmentMode="alignMargins">
-        </GridLayout>
-    </ScrollView>
-
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -103,5 +25,85 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_marginBottom="45dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/img_menu_list_title_bar"
+        android:background="@mipmap/bg_title_bar"
+        android:layout_below="@id/image_menu_list_title"
+        android:layout_alignRight="@id/btn_menu_list_goBefore"
+        android:layout_alignEnd="@id/btn_menu_list_goBefore"
+        android:layout_marginTop="17dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/img_menu_list_title2"
+        android:background="@mipmap/menu_namjungnaedle_story"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="24dp"
+        android:layout_marginLeft="35dp"
+        android:layout_below="@id/img_menu_list_title_bar" />
+
+
+
+    <ImageButton
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:id="@+id/btn_menu_list_goHotFashion"
+        android:layout_row="0"
+        android:layout_column="14"
+        android:background="@mipmap/menu_hot_fashion_btn"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="top|center_horizontal"
+        android:layout_below="@+id/img_menu_list_title2"
+        android:layout_alignLeft="@+id/img_menu_list_title2"
+        android:layout_alignStart="@+id/img_menu_list_title2" />
+
+    <ImageButton
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:id="@+id/btn_menu_list_goClothList"
+        android:layout_row="0"
+        android:layout_column="14"
+        android:background="@mipmap/menu_fitting_room_btn"
+        android:layout_gravity="top|center_horizontal"
+        android:layout_marginTop="15dp"
+        android:layout_below="@id/btn_menu_list_goHotFashion"
+        android:layout_alignLeft="@id/btn_menu_list_goHotFashion"
+        android:layout_alignStart="@id/btn_menu_list_goHotFashion" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/img_menu_list_title3"
+        android:background="@mipmap/menu_men_story"
+        android:layout_gravity="center_horizontal"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/scrollView"
+        android:layout_toEndOf="@+id/scrollView" />
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView"
+        android:layout_gravity="center_horizontal"
+        android:textAlignment="center"
+        android:fillViewport="true"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/img_menu_list_title3"
+        android:layout_alignLeft="@id/btn_menu_list_goClothList"
+        android:layout_alignStart="@id/btn_menu_list_goClothList">
+
+        <GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id = "@+id/gridLayout_activity_menu"
+            android:alignmentMode="alignMargins">
+        </GridLayout>
+    </ScrollView>
+
+
 
 </RelativeLayout>

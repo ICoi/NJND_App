@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.GridLayout;
+import android.widget.ImageButton;
 import android.widget.TableRow;
 
 import com.example.ico.model.ScrollableGridLayout;
@@ -63,7 +64,7 @@ public class MenuListActivity extends ActionBarActivity {
 
     public void setOnClickListener()
     {
-        Button btn2 = (Button)findViewById(R.id.btn_menu_list_goClothList);
+        ImageButton btn2 = (ImageButton)findViewById(R.id.btn_menu_list_goClothList);
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
