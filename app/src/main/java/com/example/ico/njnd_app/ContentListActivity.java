@@ -12,6 +12,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
+import android.widget.LinearLayout;
+
+import com.example.ico.model.ScrollableLinearLayout;
 
 
 public class ContentListActivity extends ActionBarActivity {
@@ -29,10 +32,12 @@ public class ContentListActivity extends ActionBarActivity {
         Drawable top = getResources().getDrawable(R.mipmap.ic_launcher);
         setContentView(R.layout.activity_content_list);
 
-        GridLayout grid = (GridLayout)findViewById(R.id.gridLayout_activity_content_list);
+        LinearLayout grid = (LinearLayout)findViewById(R.id.linearLayout_activity_content_list);
 
         for(int num = 0;num<maxButtonNum; num++) {
-            content[num] = new Button(this);
+            ScrollableLinearLayout ll = new ScrollableLinearLayout(ContentListActivity.this,"com.example.ico.njnd_app.ContentPageActivity", "GetContentTitle", "Date", "Writer");
+
+            /*content[num] = new Button(this);
             content[num].setCompoundDrawablesWithIntrinsicBounds(null,top,null,null);
             content[num].setText("" + num);
             content[num].setId(num);
@@ -41,15 +46,17 @@ public class ContentListActivity extends ActionBarActivity {
             content[num].setHeight(500);
             content[num].setWidth(700);
             content[num].setGravity(Gravity.CENTER);
-                /*GridLayout.Spec row = GridLayout.spec(num%2,1);
-                GridLayout.Spec col = GridLayout.spec(num%6,1);*/
+                GridLayout.Spec row = GridLayout.spec(num%2,1);
+                GridLayout.Spec col = GridLayout.spec(num%6,1);
 
-            grid.addView(content[num], new GridLayout.LayoutParams(GridLayout.spec(num / 2, GridLayout.CENTER), GridLayout.spec(num % 2, GridLayout.CENTER)));
+*/
+            grid.addView(ll);
+
         }
 
 
 
-        setOnClickListener();
+//        setOnClickListener();
     }
 
     @Override
