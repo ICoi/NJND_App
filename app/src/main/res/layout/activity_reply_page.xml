@@ -81,7 +81,6 @@
         android:layout_marginLeft="10dp"
         android:textAlignment="center"
         android:fillViewport="true"
-        android:layout_alignRight=""
         android:layout_below="@id/NextTitle"
         android:layout_marginBottom="80dp">
 
@@ -124,7 +123,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Re:"
-        android:textSize="30dp"
+        android:textSize="25dp"
         android:id="@+id/Re"
         android:layout_marginRight="15dp"
         android:layout_alignTop="@id/content_req_text"
