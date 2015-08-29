@@ -86,10 +86,11 @@
 
         <GridLayout
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="wrap_content"
             android:id = "@+id/gridLayout_activity_menu"
             android:alignmentMode="alignMargins"
             android:layout_above="@+id/btn_reply_page_goBefore"
+            android:layout_marginTop="50dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true">
         </GridLayout>

@@ -1,6 +1,6 @@
 package com.example.ico.njnd_app;
 
-import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 
 
-public class ClothActivity extends ActionBarActivity {
+public class ClothActivity extends Activity {
 
     Button[] btnWord = new Button[40];
     LinearLayout linear;

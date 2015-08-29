@@ -1,5 +1,6 @@
 package com.example.ico.njnd_app;
 
+import android.app.Activity;
 import android.os.Message;
 import android.preference.PreferenceActivity;
 import android.support.v7.app.ActionBarActivity;
@@ -21,7 +22,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends Activity {
     private ImageView img;
 
     @Override

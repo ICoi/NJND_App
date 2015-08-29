@@ -1,6 +1,7 @@
 package com.example.ico.njnd_app;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -17,7 +18,7 @@ import android.widget.LinearLayout;
 import com.example.ico.model.ScrollableLinearLayout;
 
 
-public class ContentListActivity extends ActionBarActivity {
+public class ContentListActivity extends Activity {
     private String contentID;
     public String titles[];
 

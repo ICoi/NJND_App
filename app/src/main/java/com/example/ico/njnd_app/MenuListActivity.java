@@ -1,6 +1,7 @@
 package com.example.ico.njnd_app;
 
 import android.app.ActionBar;
+import android.app.Activity;
 import android.bluetooth.BluetoothClass;
 import android.content.Intent;
 import android.content.pm.ResolveInfo;
@@ -24,7 +25,7 @@ import android.widget.TableRow;
 import com.example.ico.model.ScrollableGridLayout;
 
 
-public class MenuListActivity extends ActionBarActivity {
+public class MenuListActivity extends Activity {
 
     public int maxButtonNum = 12;
     private ScrollableGridLayout[] layoutWord = new ScrollableGridLayout[maxButtonNum];
