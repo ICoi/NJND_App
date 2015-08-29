@@ -1,24 +1,25 @@
 package com.example.ico.njnd_app;
 
-import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.LinearLayout;
+import android.widget.GridLayout;
 
-import com.example.ico.model.ScrollableLinearLayout;
+import com.example.ico.model.ScrollableLinearLayout_Reply;
 
 
-public class ReplyPageActivity extends ActionBarActivity {
+public class ReplyPageActivity extends Activity {
     public int maxReply = 12;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reply_page);
-        LinearLayout grid = (LinearLayout)findViewById(R.id.linearLayout_activity_content_list);
+        GridLayout grid = (GridLayout)findViewById(R.id.gridLayout_activity_menu);
 
         for(int num = 0;num<maxReply; num++) {
-            ScrollableLinearLayout ll = new ScrollableLinearLayout(ReplyPageActivity.this, "GetContent", "Date", "Writer");
+            ScrollableLinearLayout_Reply ll = new ScrollableLinearLayout_Reply(ReplyPageActivity.this, "GetContent", "Date", "Writer");
 
             /*content[num] = new Button(this);
             content[num].setCompoundDrawablesWithIntrinsicBounds(null,top,null,null);

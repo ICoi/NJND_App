@@ -81,6 +81,7 @@
         android:layout_marginLeft="10dp"
         android:textAlignment="center"
         android:fillViewport="true"
+        android:layout_alignRight=""
         android:layout_below="@id/NextTitle"
         android:layout_marginBottom="80dp">
 
