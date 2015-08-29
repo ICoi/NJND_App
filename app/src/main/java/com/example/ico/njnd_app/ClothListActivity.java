@@ -1,5 +1,6 @@
 package com.example.ico.njnd_app;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -9,7 +10,7 @@ import android.view.View;
 import android.widget.Button;
 
 
-public class ClothListActivity extends ActionBarActivity {
+public class ClothListActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

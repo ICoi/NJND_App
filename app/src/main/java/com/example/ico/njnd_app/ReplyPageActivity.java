@@ -6,11 +6,13 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.GridLayout;
+import android.widget.LinearLayout;
 
+import com.example.ico.model.ScrollableLinearLayout;
 import com.example.ico.model.ScrollableLinearLayout_Reply;
 
 
-public class ReplyPageActivity extends Activity {
+public class ReplyPageActivity extends Activity{
     public int maxReply = 12;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
