@@ -24,7 +24,7 @@ public class ScrollableGridLayout extends RelativeLayout{
     LayoutInflater mInflater;
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-    public ScrollableGridLayout(final Context context, final String testText)
+    public ScrollableGridLayout(final Context context, final String testText,final String name,final String cateID, final String cateImgURL)
     {
         super(context);
         mInflater = LayoutInflater.from(context);
@@ -48,6 +48,7 @@ public class ScrollableGridLayout extends RelativeLayout{
             public void onClick(View v) {
                 Intent in = new Intent();
                 in.setComponent(new ComponentName("com.example.ico.njnd_app", testText.toString()));
+                in.putExtra("category",cateID);
                 context.startActivity(in);
             }
         });

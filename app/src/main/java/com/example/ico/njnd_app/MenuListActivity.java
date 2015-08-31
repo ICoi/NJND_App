@@ -21,31 +21,74 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TableRow;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.ico.model.ScrollableGridLayout;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestHandle;
+
+import org.apache.http.Header;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 
 public class MenuListActivity extends Activity {
+    private AsyncHttpClient client;
 
     public int maxButtonNum = 12;
     private ScrollableGridLayout[] layoutWord = new ScrollableGridLayout[maxButtonNum];
     GridLayout linear;
     private String text[] = {"123","345","456"};
-
+    private String getname[], getcateID[], getcateURL[];
+    private int contentNum;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_list);
 
+        client = new AsyncHttpClient();
+
+        final RequestHandle requestHandle = client.get("http://namjungnaedle123.cafe24.com:3000/app/menu", new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] response) {
+                String resStr = new String(response);
+                try {
+                    JSONObject object = new JSONObject(resStr);
+                    contentNum = object.getInt("contentNum");
+                    JSONArray jArry = new JSONArray(object.getString("categorys"));
+                    for (int i = 0; i < jArry.length(); i++) {
+                        JSONObject inObject = jArry.getJSONObject(i);
+                        Toast.makeText(getApplicationContext(), inObject.getString("name"), Toast.LENGTH_SHORT).show();
+                        getname[i] = inObject.getString("name");
+                        getcateID[i] = inObject.getString("cateID");
+                        getcateURL[i] = inObject.getString("cateImgURL");
+                    }
+
+                    Toast.makeText(getApplicationContext(), object.getString("status"), Toast.LENGTH_SHORT).show();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
+
+            }
+        });
 
         linear = (GridLayout)findViewById(R.id.gridLayout_activity_menu);
-        for(int num = 0;num<maxButtonNum; num++) {
-        layoutWord[num] = new ScrollableGridLayout(MenuListActivity.this, "com.example.ico.njnd_app.ContentListActivity");
+        for(int num = 0;num<contentNum; num++) {
+        layoutWord[num] = new ScrollableGridLayout(MenuListActivity.this, "com.example.ico.njnd_app.ContentListActivity",getname[num],getcateID[num],getcateURL[num]);
             GridLayout.LayoutParams param =  new GridLayout.LayoutParams(GridLayout.spec(num / 2, GridLayout.CENTER),GridLayout.spec(num % 2, GridLayout.CENTER));
             param.width = 520;
             param.leftMargin = 20;
             param.height = 400;
             param.bottomMargin = 10;
+
             linear.addView(layoutWord[num], param);
         }
 
