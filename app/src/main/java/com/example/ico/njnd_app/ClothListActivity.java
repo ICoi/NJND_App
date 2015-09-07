@@ -25,7 +25,6 @@ public class ClothListActivity extends Activity {
         webview.setWebViewClient(new WebClient()); // 응용프로그램에서 직접 url 처리
         WebSettings set = webview.getSettings();
         set.setJavaScriptEnabled(true);
-        set.setBuiltInZoomControls(true);
         webview.loadUrl("http://namjungnaedle123.cafe24.com:3000/web/fitting_room_list");
     }
 

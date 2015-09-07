@@ -84,7 +84,7 @@ public class MenuListActivity extends Activity {
         for(int num = 0;num<contentNum; num++) {
         layoutWord[num] = new ScrollableGridLayout(MenuListActivity.this, "com.example.ico.njnd_app.ContentListActivity",getname[num],getcateID[num],getcateURL[num]);
             GridLayout.LayoutParams param =  new GridLayout.LayoutParams(GridLayout.spec(num / 2, GridLayout.CENTER),GridLayout.spec(num % 2, GridLayout.CENTER));
-            param.width = 520;
+            param.width = 500;
             param.leftMargin = 20;
             param.height = 400;
             param.bottomMargin = 10;
@@ -123,6 +123,15 @@ public class MenuListActivity extends Activity {
                 startActivity(i);
             }
 
+        });
+
+        ImageButton btn3 = (ImageButton)findViewById(R.id.btn_menu_list_goHotFashion);
+        btn3.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent i = new Intent(MenuListActivity.this, HotFashionActivity.class);
+                startActivity(i);
+            }
         });
     }
     @Override
