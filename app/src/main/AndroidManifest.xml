@@ -41,7 +41,7 @@
             android:label="@string/title_activity_reply_page" >
         </activity>
         <activity
-            android:name=".ClothActivity"
+            android:name=".HotFashionActivity"
             android:label="@string/title_activity_cloth" >
         </activity>
     </application>
