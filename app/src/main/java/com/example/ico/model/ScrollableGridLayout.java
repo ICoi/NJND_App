@@ -4,6 +4,9 @@ import android.annotation.TargetApi;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -16,6 +19,11 @@ import android.widget.Toast;
 
 import com.example.ico.njnd_app.ContentListActivity;
 import com.example.ico.njnd_app.R;
+
+import java.io.BufferedInputStream;
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
 
 /**
  * Created by user on 2015-08-15.
@@ -34,7 +42,6 @@ public class ScrollableGridLayout extends RelativeLayout{
         tv.setText(testText.toString());
 
         ButtonInfo btn = new ButtonInfo(context);
-
         btn.setBackground(this.getResources().getDrawable(R.mipmap.content_menu_cell_img));
         btn.setScaleType(ImageView.ScaleType.FIT_XY);
         btn.setURL(testText.toString());
@@ -42,6 +49,8 @@ public class ScrollableGridLayout extends RelativeLayout{
         btn.setMinimumWidth(150);
         btn.setMaxHeight(120);
         btn.setMinimumHeight(120);
+        btn.setTag(cateImgURL);
+        new DownloadImage().execute((Runnable) btn);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,4 +64,40 @@ public class ScrollableGridLayout extends RelativeLayout{
         this.addView(btn);
     }
 
+}
+class DownloadImage extends AsyncTask<String, Void, Bitmap> {
+
+    ImageButton Ib = null;
+
+    protected Bitmap doInBackground(ImageButton... imageButton) {
+        this.Ib = imageButton[0];
+        return download_Image((String)Ib.getTag());
+
+    }
+
+    @Override
+    protected Bitmap doInBackground(String... strings) {
+        return null;
+    }
+
+    @Override
+    protected  void onPostExecute(Bitmap result){
+        Ib.setImageBitmap(result);
+    }
+
+    private Bitmap download_Image(String tag) {
+        Bitmap bm = null;
+        try{
+            URL url = new URL(tag);
+            URLConnection conn = url.openConnection();
+            conn.connect();
+            InputStream is = conn.getInputStream();
+            BufferedInputStream bis = new BufferedInputStream(is);
+            bm = BitmapFactory.decodeStream(bis);
+            bis.close();
+            is.close();
+            return bm;
+        }catch (Exception e){}
+        return bm;
+    }
 }
