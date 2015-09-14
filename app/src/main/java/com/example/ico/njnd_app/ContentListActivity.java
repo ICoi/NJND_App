@@ -51,9 +51,9 @@ public class ContentListActivity extends Activity {
         client = new AsyncHttpClient();
 
         Intent intent = getIntent();
-        category = intent.getExtras().getString("category");
-        TextView cateLabel = (TextView)findViewById(R.id.categoryLabel);
-        cateLabel.setText(category);
+      //  category = intent.getExtras().getString("category");
+        //TextView cateLabel = (TextView)findViewById(R.id.categoryLabel);
+        //cateLabel.setText(category);
 
         content = new Button[maxButtonNum];
         Drawable top = getResources().getDrawable(R.mipmap.ic_launcher);

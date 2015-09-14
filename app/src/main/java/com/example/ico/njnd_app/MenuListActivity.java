@@ -43,7 +43,9 @@ public class MenuListActivity extends Activity {
     private ScrollableGridLayout[] layoutWord = new ScrollableGridLayout[maxButtonNum];
     GridLayout linear;
     private String text[] = {"123","345","456"};
-    private String getname[], getcateID[], getcateURL[];
+    private String[] getname ;
+    private String[] getcateID ;
+    private String[] getcateURL ;
     private int contentNum;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,20 +60,36 @@ public class MenuListActivity extends Activity {
                 String resStr = new String(response);
                 try {
                     JSONObject object = new JSONObject(resStr);
-                    contentNum = object.getInt("contentNum");
+                    contentNum = 2;//object.getInt("contentNum");
                     JSONArray jArry = new JSONArray(object.getString("categorys"));
+                    getname = new String[jArry.length()];
+                    getcateID  = new String[jArry.length()];
+                    getcateURL = new String[jArry.length()];
                     for (int i = 0; i < jArry.length(); i++) {
                         JSONObject inObject = jArry.getJSONObject(i);
-                        Toast.makeText(getApplicationContext(), inObject.getString("name"), Toast.LENGTH_SHORT).show();
-                        getname[i] = inObject.getString("name");
-                        getcateID[i] = inObject.getString("cateID");
-                        getcateURL[i] = inObject.getString("cateImgURL");
+                        Toast.makeText(getApplicationContext(), inObject.getString("cate_name"), Toast.LENGTH_SHORT).show();
+                        getname[i] = inObject.getString("cate_name");
+                        getcateID[i] = inObject.getString("cate_idx");
+                        getcateURL[i] = inObject.getString("cate_url");
+                    }
+
+                    linear = (GridLayout)findViewById(R.id.gridLayout_activity_menu);
+                    for(int num = 0;num<jArry.length(); num++) {
+                        layoutWord[num] = new ScrollableGridLayout(MenuListActivity.this, "com.example.ico.njnd_app.ContentListActivity",getname[num],getcateID[num],getcateURL[num]);
+                        GridLayout.LayoutParams param =  new GridLayout.LayoutParams(GridLayout.spec(num / 2, GridLayout.CENTER),GridLayout.spec(num % 2, GridLayout.CENTER));
+                        param.width = 500;
+                        param.leftMargin = 20;
+                        param.height = 400;
+                        param.bottomMargin = 10;
+
+                        linear.addView(layoutWord[num], param);
                     }
 
                     Toast.makeText(getApplicationContext(), object.getString("status"), Toast.LENGTH_SHORT).show();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+
             }
 
             @Override
@@ -80,17 +98,7 @@ public class MenuListActivity extends Activity {
             }
         });
 
-        linear = (GridLayout)findViewById(R.id.gridLayout_activity_menu);
-        for(int num = 0;num<contentNum; num++) {
-        layoutWord[num] = new ScrollableGridLayout(MenuListActivity.this, "com.example.ico.njnd_app.ContentListActivity",getname[num],getcateID[num],getcateURL[num]);
-            GridLayout.LayoutParams param =  new GridLayout.LayoutParams(GridLayout.spec(num / 2, GridLayout.CENTER),GridLayout.spec(num % 2, GridLayout.CENTER));
-            param.width = 500;
-            param.leftMargin = 20;
-            param.height = 400;
-            param.bottomMargin = 10;
 
-            linear.addView(layoutWord[num], param);
-        }
 
 
     /*

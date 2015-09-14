@@ -45,6 +45,8 @@ public class ScrollableLinearLayout extends RelativeLayout{
         btn.setMinimumWidth(150);
         btn.setMaxHeight(120);
         btn.setMinimumHeight(120);
+        new DownloadImage(btn).execute();
+
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
