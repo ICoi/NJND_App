@@ -37,42 +37,44 @@ public class MainActivity extends Activity {
 
         setContentView(R.layout.activity_main);
 
-        AsyncHttpClient client = new AsyncHttpClient();
+        //AsyncHttpClient client = new AsyncHttpClient();
         PersistentCookieStore myCookieStore = new PersistentCookieStore(getApplicationContext());
         List<Cookie> cookies = myCookieStore.getCookies();
 
         if(cookies.isEmpty()){
             Toast.makeText(getApplicationContext(), "no cookies", Toast.LENGTH_SHORT).show();
 
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    // Do something after 3s = 3000ms
+                    Intent i = new Intent(MainActivity.this, SignUpActivity.class);
+                    startActivity(i);
+                }
+            },1000);
+            // move intent to Sign up page
+/*
             client.setCookieStore(myCookieStore);
             BasicClientCookie newCookie = new BasicClientCookie("AppID", "awesome");
             newCookie.setVersion(1);
             newCookie.setDomain("namjungnaedle123.cafe24.com:3000");
             newCookie.setPath("/");
             myCookieStore.addCookie(newCookie);
+            */
 
-            final Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    // Do something after 3s = 3000ms
-                    Intent i = new Intent(MainActivity.this, MenuListActivity.class);
-                    startActivity(i);
-                }
-            }, 3000);
         }else{
             Toast.makeText(getApplicationContext(),"HAS cookies // " + cookies.get(0).getName() + " - " + cookies.get(0).getValue(),Toast.LENGTH_SHORT).show();
-
             final Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     // Do something after 3s = 3000ms
-                    Intent i = new Intent(MainActivity.this, MenuListActivity.class);
+                    Intent i = new Intent(MainActivity.this, SignUpActivity.class);
                     startActivity(i);
                 }
             }, 3000);
         }
-        img = (ImageView)findViewById(R.id.image);
+      //  img = (ImageView)findViewById(R.id.image);
     }
 }

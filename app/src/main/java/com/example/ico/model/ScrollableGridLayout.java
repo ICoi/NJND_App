@@ -57,7 +57,8 @@ public class ScrollableGridLayout extends RelativeLayout{
             public void onClick(View v) {
                 Intent in = new Intent();
                 in.setComponent(new ComponentName("com.example.ico.njnd_app", testText.toString()));
-                in.putExtra("category",cateID);
+                in.putExtra("IDX",cateID);
+                in.putExtra("Category",name);
                 context.startActivity(in);
             }
         });

@@ -8,6 +8,7 @@ import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -16,11 +17,11 @@ import com.example.ico.njnd_app.R;
 /**
  * Created by user on 2015-08-15.
  */
-public class ScrollableLinearLayout extends RelativeLayout{
+public class ScrollableLinearLayout extends LinearLayout{
     LayoutInflater mInflater;
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-    public ScrollableLinearLayout(final Context context, final String testText,final String testTitle,final String testDate,final String testWriter)
+    public ScrollableLinearLayout(final Context context, final String testURL,final String testTitle,final String testDate,final String testWriter,final String contentIDX)
     {
         super(context);
         mInflater = LayoutInflater.from(context);
@@ -31,7 +32,7 @@ public class ScrollableLinearLayout extends RelativeLayout{
         TextView date = (TextView)findViewById(R.id.textDate);
         TextView writer = (TextView)findViewById(R.id.textWriter);
 
-        tv.setText(testText.toString());
+        tv.setText(testURL.toString());
         title.setText(testTitle.toString());
         date.setText(testDate.toString());
         writer.setText(testWriter.toString());
@@ -40,7 +41,7 @@ public class ScrollableLinearLayout extends RelativeLayout{
 
         btn.setBackground(this.getResources().getDrawable(R.mipmap.trans));
         btn.setScaleType(ImageView.ScaleType.FIT_XY);
-        btn.setURL(testText.toString());
+        btn.setURL(testURL.toString());
         btn.setLayoutParams(new MarginLayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
         btn.setMinimumWidth(150);
         btn.setMaxHeight(120);
@@ -52,7 +53,9 @@ public class ScrollableLinearLayout extends RelativeLayout{
             @Override
             public void onClick(View v) {
                 Intent in = new Intent();
-                in.setComponent(new ComponentName("com.example.ico.njnd_app", testText.toString()));
+                in.setComponent(new ComponentName("com.example.ico.njnd_app", testURL.toString()));
+                in.putExtra("IDX", contentIDX);
+                //in.putExtra("Category",name);
                 context.startActivity(in);
             }
         });

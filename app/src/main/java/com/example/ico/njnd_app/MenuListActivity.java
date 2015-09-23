@@ -9,6 +9,7 @@ import android.preference.PreferenceScreen;
 import android.support.v4.widget.SlidingPaneLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -47,13 +48,14 @@ public class MenuListActivity extends Activity {
     private String[] getcateID ;
     private String[] getcateURL ;
     private int contentNum;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_list);
 
         client = new AsyncHttpClient();
-
+        Log.d("test","123");
         final RequestHandle requestHandle = client.get("http://namjungnaedle123.cafe24.com:3000/app/menu", new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] response) {
@@ -97,20 +99,6 @@ public class MenuListActivity extends Activity {
 
             }
         });
-
-
-
-
-    /*
-        String text[] =  {"123","456","789"};
-
-        for (int i = 0 ; i < text.length; i++) {
-              this.text[i] = text[i];
-        }
-    */
-
-
-
         setOnClickListener();
     }
 

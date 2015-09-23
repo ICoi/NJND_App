@@ -7,18 +7,63 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.GridLayout;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.ico.model.ScrollableLinearLayout;
 import com.example.ico.model.ScrollableLinearLayout_Reply;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestHandle;
+
+import org.apache.http.Header;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 public class ReplyPageActivity extends Activity{
     public int maxReply = 12;
+    AsyncHttpClient client;
+
+    private String nick[];
+    private String comment[];
+    private int commentNum;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reply_page);
         GridLayout grid = (GridLayout)findViewById(R.id.gridLayout_activity_menu);
+
+        final RequestHandle requestHandle = client.get("http://namjungnaedle123.cafe24.com:3000/app/board?cateID=1&pageNum=1", new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] response) {
+                String resStr = new String(response);
+                try {
+                    JSONObject object = new JSONObject(resStr);
+                    commentNum = object.getInt("commentNum");
+                    JSONArray jArry = new JSONArray(object.getString("datas"));
+                    for (int i = 0; i < jArry.length(); i++) {
+                        JSONObject inObject = jArry.getJSONObject(i);
+                        nick[i] = inObject.getString("nick");
+                        comment[i] = inObject.getString("comment");
+
+                        Toast.makeText(getApplicationContext(), inObject.getString("name"), Toast.LENGTH_SHORT).show();
+
+                    }
+
+                    Toast.makeText(getApplicationContext(), object.getString("status"), Toast.LENGTH_SHORT).show();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
+
+            }
+        });
 
         for(int num = 0;num<maxReply; num++) {
             ScrollableLinearLayout_Reply ll = new ScrollableLinearLayout_Reply(ReplyPageActivity.this, "GetContent", "Date", "Writer");

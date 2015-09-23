@@ -3,6 +3,7 @@ package com.example.ico.njnd_app;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.AvoidXfermode;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.v7.app.ActionBarActivity;
@@ -17,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ico.model.ScrollableGridLayout;
 import com.example.ico.model.ScrollableLinearLayout;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -31,16 +33,21 @@ import org.json.JSONObject;
 public class ContentListActivity extends Activity {
 
     private AsyncHttpClient client;
+
+    private ScrollableLinearLayout[] layoutWord = new ScrollableLinearLayout[12];
     private String contentID[];
     private String contentIDx[];
     private String likes[];
     private int clothIdxs[][];
     private String dateTime[];
-
+    private String editor[];
+    private String titleImgURL[];
     public String titles[];
     private String category;
     public int maxButtonNum = 20;
     private int contentNum;
+
+    private String idx;
 
     private Button content[];
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
@@ -51,38 +58,54 @@ public class ContentListActivity extends Activity {
         client = new AsyncHttpClient();
 
         Intent intent = getIntent();
-      //  category = intent.getExtras().getString("category");
-        //TextView cateLabel = (TextView)findViewById(R.id.categoryLabel);
-        //cateLabel.setText(category);
+        idx = intent.getExtras().getString("IDX");
+        category = intent.getExtras().getString("Category");
 
         content = new Button[maxButtonNum];
         Drawable top = getResources().getDrawable(R.mipmap.ic_launcher);
         setContentView(R.layout.activity_content_list);
+        TextView cateLabel = (TextView)findViewById(R.id.categoryLabel);
+        cateLabel.setText(category);
 
-        LinearLayout grid = (LinearLayout)findViewById(R.id.linearLayout_activity_content_list);
+        final LinearLayout grid = (LinearLayout)findViewById(R.id.linearLayout_activity_content_list);
         //How to script request
-        final RequestHandle requestHandle = client.get("http://namjungnaedle123.cafe24.com:3000/app/board?cateID=1&pageNum=1", new AsyncHttpResponseHandler() {
+        final RequestHandle requestHandle = client.get("http://namjungnaedle123.cafe24.com:3000/app/board?cateID=" + idx + "&pageNum=1", new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] response) {
                 String resStr = new String(response);
                 try {
                     JSONObject object = new JSONObject(resStr);
-                    contentNum = object.getInt("contentNum");
-                    JSONArray jArry = new JSONArray(object.getString("rankedDatas"));
+                        contentNum = object.getInt("pageContentsNum");
+
+                    JSONArray jArry = new JSONArray(object.getString("datas"));
+                    likes = new String[jArry.length()];
+                    titles  = new String[jArry.length()];
+                    titleImgURL  = new String[jArry.length()];
+                    editor  = new String[jArry.length()];
+                    dateTime  = new String[jArry.length()];
+                    contentIDx  = new String[jArry.length()];
                     for (int i = 0; i < jArry.length(); i++) {
                         JSONObject inObject = jArry.getJSONObject(i);
                         likes[i] = inObject.getString("likes");
-
-                        JSONArray clothIdArry = new JSONArray(inObject.getString("clothIdxs"));
-                        for(int k = 0;k<clothIdArry.length();k++) {
-                            clothIdxs[i][k]  = clothIdArry.getInt(k);
-
-                        }
-                            Toast.makeText(getApplicationContext(), inObject.getString("name"), Toast.LENGTH_SHORT).show();
+                        titles[i] = inObject.getString("title");
+                        titleImgURL[i] = inObject.getString("titleImg");
+                        editor[i] = "test"; //inObject.getString("editor");
+                        dateTime[i] = inObject.getString("dateTime");
+                        contentIDx[i] = inObject.getString("contentIdx");
 
                     }
 
                     Toast.makeText(getApplicationContext(), object.getString("status"), Toast.LENGTH_SHORT).show();
+                    for(int num = 0;num<jArry.length(); num++) {
+                        layoutWord[num] = new ScrollableLinearLayout(ContentListActivity.this, "com.example.ico.njnd_app.ContentPageActivity",titles[num],dateTime[num],editor[num],contentIDx[num]);
+                   //LinearLayout.LayoutParams param =  new LinearLayout.LayoutParams(LinearLayout.spec(num / 2, LinearLayout.CENTER),GridLayout.spec(num % 2, GridLayout.CENTER));
+                     //param.width = 500;
+                      //param.leftMargin = 20;
+                       //param.height = 400;
+                        //param.bottomMargin = 10;
+
+                        grid.addView(layoutWord[num]/*, param*/);
+                    }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -94,25 +117,7 @@ public class ContentListActivity extends Activity {
             }
         });
 
-        for(int num = 0;num<contentNum; num++) {
-            ScrollableLinearLayout ll = new ScrollableLinearLayout(ContentListActivity.this,"com.example.ico.njnd_app.ContentPageActivity", "GetContentTitle", "Date", "Writer");
 
-            /*content[num] = new Button(this);
-            content[num].setCompoundDrawablesWithIntrinsicBounds(null,top,null,null);
-            content[num].setText("" + num);
-            content[num].setId(num);
-            content[num].setBackground(this.getResources().getDrawable(R.mipmap.ic_launcher));
-            content[num].setTextSize(20f);
-            content[num].setHeight(500);
-            content[num].setWidth(700);
-            content[num].setGravity(Gravity.CENTER);
-                GridLayout.Spec row = GridLayout.spec(num%2,1);
-                GridLayout.Spec col = GridLayout.spec(num%6,1);
-
-*/
-            grid.addView(ll);
-
-        }
 
 
 
