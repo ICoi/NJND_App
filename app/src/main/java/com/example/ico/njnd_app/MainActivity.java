@@ -70,7 +70,7 @@ public class MainActivity extends Activity {
                 @Override
                 public void run() {
                     // Do something after 3s = 3000ms
-                    Intent i = new Intent(MainActivity.this, SignUpActivity.class);
+                    Intent i = new Intent(MainActivity.this, MenuListActivity.class);
                     startActivity(i);
                 }
             }, 3000);

@@ -21,6 +21,7 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.PersistentCookieStore;
 import com.loopj.android.http.RequestHandle;
+import com.loopj.android.http.RequestParams;
 
 import org.apache.http.Header;
 import org.apache.http.cookie.Cookie;
@@ -52,7 +53,10 @@ public class SignUpActivity extends Activity {
     private EditText NickText;
     private Button Confirm;
 
+    public RequestParams requestParams = new RequestParams();
     public JSONObject postBodyMsg = new JSONObject();
+
+    StringEntity entity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,21 +77,60 @@ public class SignUpActivity extends Activity {
     void setOnClickListener()
     {
         Confirm.setOnClickListener(new View.OnClickListener(){
-            StringEntity entity;
+
             @Override
             public void onClick(View v) {
                 key = new Date().toString();
-                try {
-                    postBodyMsg.put("key",key);
-                    postBodyMsg.put("appID","null");
-                    postBodyMsg.put("nickName",NickText.getText().toString());
-                    entity = new StringEntity(postBodyMsg.toString());
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }catch (UnsupportedEncodingException e) {
-                    e.printStackTrace();
-                }
-                    client.post(getApplicationContext(), "http://namjungnaedle123.cafe24.com:3000/app/login", entity, "application/json", new AsyncHttpResponseHandler() {
+
+                    requestParams.put("key",key);
+                    requestParams.put("appID","");
+                    requestParams.put("nickName",NickText.getText().toString());
+
+                    //postBodyMsg.put("key",key);
+                    //postBodyMsg.put("nickName",NickText.getText().toString());
+                    //entity = new StringEntity(postBodyMsg.toString());
+
+                    client.post("http://namjungnaedle123.cafe24.com:3000/app/login", requestParams, new AsyncHttpResponseHandler() {
+                        @Override
+                        public void onSuccess(int i, Header[] headers, byte[] bytes) {
+                            String resStr = new String(bytes);
+
+                            try {
+                                JSONObject object = new JSONObject(resStr);
+                                getStatus = object.getString("status");
+                                if(getStatus.charAt(0) =='s')
+                                {
+                                    appID = object.getString("appID");
+                                    PersistentCookieStore myCookieStore = new PersistentCookieStore(getApplicationContext());
+                                    List<Cookie> cookies = myCookieStore.getCookies();
+
+                                    // if Login status 's' than make cookie
+                                    client.setCookieStore(myCookieStore);
+                                    BasicClientCookie newCookie = new BasicClientCookie("AppID", appID);
+                                    newCookie.setVersion(1);
+                                    newCookie.setDomain("namjungnaedle123.cafe24.com:3000");
+                                    newCookie.setPath("/");
+                                    myCookieStore.addCookie(newCookie);
+
+                                            Intent in = new Intent(SignUpActivity.this, MenuListActivity.class);
+                                            startActivity(in);
+
+                                }
+                                else
+                                {
+                                    getStatus = "s";
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
+
+                        }
+                    });
+                    /*client.post(getApplicationContext(), "http://namjungnaedle123.cafe24.com:3000/app/login", entity, "application/json", new AsyncHttpResponseHandler() {
                         @Override
                         public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
 
@@ -130,7 +173,7 @@ public class SignUpActivity extends Activity {
                         public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
 
                         }
-                    });
+                    });*/
 
             }
         });
