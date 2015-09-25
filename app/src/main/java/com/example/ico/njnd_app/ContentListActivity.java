@@ -122,6 +122,8 @@ public class ContentListActivity extends Activity {
 
 
 //        setOnClickListener();
+
+        testToGoNext();
     }
 
     @Override
@@ -156,5 +158,17 @@ public class ContentListActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void testToGoNext(){
+        Button btn = (Button)findViewById(R.id.btn_content_list_goNext);
+        btn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent i = new Intent(ContentListActivity.this, ContentPageActivity.class);
+                startActivity(i);
+
+            }
+        });
     }
 }

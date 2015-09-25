@@ -45,6 +45,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Before"
+        android:id="@+id/btn_content_page_goBefore"
         android:layout_gravity="center_horizontal"
         android:layout_alignParentBottom="true"
         android:layout_alignLeft="@+id/img_content_title"
@@ -62,7 +63,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView"
+        android:id="@+id/content_page_text"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/img_content_image"
         android:layout_above="@id/btn_content_page_goNext"
