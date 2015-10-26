@@ -49,7 +49,7 @@ public class ScrollableGridLayout extends RelativeLayout{
         btn.setMinimumWidth(150);
         btn.setMaxHeight(120);
         btn.setMinimumHeight(120);
-        btn.setTag("http://namjungnaedle123.cafe24.com:3000/img/cate/05c6e8783f365cec85a78f4a0c2c29fc.jpg");
+        btn.setTag(cateImgURL);
         new DownloadImage(btn).execute();
 
         btn.setOnClickListener(new View.OnClickListener() {

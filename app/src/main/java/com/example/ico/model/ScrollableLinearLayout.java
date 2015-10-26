@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,31 +22,30 @@ public class ScrollableLinearLayout extends LinearLayout{
     LayoutInflater mInflater;
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-    public ScrollableLinearLayout(final Context context, final String testURL,final String testTitle,final String testDate,final String testWriter,final String contentIDX)
+    public ScrollableLinearLayout(final Context context, final String testURL,final String testTitle,final String testDate,final String testWriter,final String contentIDX,final String titleImgURL)
     {
         super(context);
         mInflater = LayoutInflater.from(context);
         mInflater.inflate(R.layout.activity_customgridlayout_content, this, true);
 
-        TextView tv = (TextView)findViewById(R.id.textURL);
         TextView title = (TextView)findViewById(R.id.textTitle);
         TextView date = (TextView)findViewById(R.id.textDate);
         TextView writer = (TextView)findViewById(R.id.textWriter);
-
-        tv.setText(testURL.toString());
+        ImageView img = (ImageView)findViewById((R.id.img_content_list));
         title.setText(testTitle.toString());
         date.setText(testDate.toString());
         writer.setText(testWriter.toString());
 
         ButtonInfo btn = new ButtonInfo(context);
 
-        btn.setBackground(this.getResources().getDrawable(R.mipmap.trans));
+        btn.setBackground(this.getResources().getDrawable(R.mipmap.people_shape));
         btn.setScaleType(ImageView.ScaleType.FIT_XY);
-        btn.setURL(testURL.toString());
+        btn.setURL(titleImgURL);
         btn.setLayoutParams(new MarginLayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
         btn.setMinimumWidth(150);
-        btn.setMaxHeight(120);
-        btn.setMinimumHeight(120);
+//        btn.setMaxHeight(120);
+//        btn.setMinimumHeight(120);
+        btn.setTag(titleImgURL);
         new DownloadImage(btn).execute();
 
 

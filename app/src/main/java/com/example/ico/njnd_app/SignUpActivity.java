@@ -130,50 +130,7 @@ public class SignUpActivity extends Activity {
 
                         }
                     });
-                    /*client.post(getApplicationContext(), "http://namjungnaedle123.cafe24.com:3000/app/login", entity, "application/json", new AsyncHttpResponseHandler() {
-                        @Override
-                        public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
 
-                            String resStr = new String(responseBody);
-
-                            try {
-                                JSONObject object = new JSONObject(resStr);
-                                getStatus = object.getString("status");
-                                if("s" == getStatus)
-                                {
-                                    appID = object.getString("appID");
-                                    PersistentCookieStore myCookieStore = new PersistentCookieStore(getApplicationContext());
-                                    List<Cookie> cookies = myCookieStore.getCookies();
-
-                                    // if Login status 's' than make cookie
-                                    client.setCookieStore(myCookieStore);
-                                    BasicClientCookie newCookie = new BasicClientCookie("AppID", appID);
-                                    newCookie.setVersion(1);
-                                    newCookie.setDomain("namjungnaedle123.cafe24.com:3000");
-                                    newCookie.setPath("/");
-                                    myCookieStore.addCookie(newCookie);
-
-
-                                    final Handler handler = new Handler();
-                                    handler.postDelayed(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            // Do something after 3s = 3000ms
-                                            Intent i = new Intent(SignUpActivity.this, MenuListActivity.class);
-                                            startActivity(i);
-                                        }
-                                    }, 3000);
-                                }
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        }
-
-                        @Override
-                        public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
-
-                        }
-                    });*/
 
             }
         });

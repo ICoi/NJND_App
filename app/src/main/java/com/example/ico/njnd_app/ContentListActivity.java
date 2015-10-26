@@ -47,6 +47,7 @@ public class ContentListActivity extends Activity {
     public int maxButtonNum = 20;
     private int contentNum;
 
+
     private String idx;
 
     private Button content[];
@@ -67,15 +68,15 @@ public class ContentListActivity extends Activity {
         TextView cateLabel = (TextView)findViewById(R.id.categoryLabel);
         cateLabel.setText(category);
 
-        final LinearLayout grid = (LinearLayout)findViewById(R.id.linearLayout_activity_content_list);
+
         //How to script request
-        final RequestHandle requestHandle = client.get("http://namjungnaedle123.cafe24.com:3000/app/board?cateID=" + idx + "&pageNum=1", new AsyncHttpResponseHandler() {
+        final RequestHandle requestHandle = client.get("http://namjungnaedle123.cafe24.com:3000/app/board?cateID=" + idx + "&pageNum=0", new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] response) {
                 String resStr = new String(response);
                 try {
                     JSONObject object = new JSONObject(resStr);
-                        contentNum = object.getInt("pageContentsNum");
+                        contentNum = object.getInt("contentsNum");
 
                     JSONArray jArry = new JSONArray(object.getString("datas"));
                     likes = new String[jArry.length()];
@@ -96,12 +97,13 @@ public class ContentListActivity extends Activity {
                     }
 
                     Toast.makeText(getApplicationContext(), object.getString("status"), Toast.LENGTH_SHORT).show();
+                    LinearLayout grid = (LinearLayout)findViewById(R.id.linearLayout_activity_content_list);
                     for(int num = 0;num<jArry.length(); num++) {
-                        layoutWord[num] = new ScrollableLinearLayout(ContentListActivity.this, "com.example.ico.njnd_app.ContentPageActivity",titles[num],dateTime[num],editor[num],contentIDx[num]);
-                   //LinearLayout.LayoutParams param =  new LinearLayout.LayoutParams(LinearLayout.spec(num / 2, LinearLayout.CENTER),GridLayout.spec(num % 2, GridLayout.CENTER));
-                     //param.width = 500;
-                      //param.leftMargin = 20;
-                       //param.height = 400;
+                        layoutWord[num] = new ScrollableLinearLayout(ContentListActivity.this, "com.example.ico.njnd_app.ContentPageActivity",titles[num],dateTime[num],editor[num],contentIDx[num],titleImgURL[num]);
+                        //LinearLayout.LayoutParams param =  new LinearLayout.LayoutParams(LinearLayout.spec(num / 2, LinearLayout.CENTER),GridLayout.spec(num % 2, GridLayout.CENTER));
+                        //param.width = 500;
+                        //param.leftMargin = 20;
+                        //param.height = 400;
                         //param.bottomMargin = 10;
 
                         grid.addView(layoutWord[num]/*, param*/);
