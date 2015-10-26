@@ -79,10 +79,10 @@ public class MenuListActivity extends Activity {
                     for(int num = 0;num<jArry.length(); num++) {
                         layoutWord[num] = new ScrollableGridLayout(MenuListActivity.this, "com.example.ico.njnd_app.ContentListActivity",getname[num],getcateID[num],getcateURL[num]);
                         GridLayout.LayoutParams param =  new GridLayout.LayoutParams(GridLayout.spec(num / 2, GridLayout.CENTER),GridLayout.spec(num % 2, GridLayout.CENTER));
-                        param.width = 500;
-                        param.leftMargin = 20;
-                        param.height = 400;
-                        param.bottomMargin = 10;
+                        param.width = linear.getWidth()/2;
+                        //param.leftMargin = 20;
+                        param.height = 500;
+                        param.bottomMargin = 20;
 
                         linear.addView(layoutWord[num], param);
                     }

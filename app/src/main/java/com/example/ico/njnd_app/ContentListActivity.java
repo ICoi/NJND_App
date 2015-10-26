@@ -12,6 +12,7 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.LinearLayout;
@@ -100,13 +101,15 @@ public class ContentListActivity extends Activity {
                     LinearLayout grid = (LinearLayout)findViewById(R.id.linearLayout_activity_content_list);
                     for(int num = 0;num<jArry.length(); num++) {
                         layoutWord[num] = new ScrollableLinearLayout(ContentListActivity.this, "com.example.ico.njnd_app.ContentPageActivity",titles[num],dateTime[num],editor[num],contentIDx[num],titleImgURL[num]);
-                        //LinearLayout.LayoutParams param =  new LinearLayout.LayoutParams(LinearLayout.spec(num / 2, LinearLayout.CENTER),GridLayout.spec(num % 2, GridLayout.CENTER));
+                        LinearLayout.LayoutParams param =  new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                        //param.width = 500;
+                        //param.height = 200;
                         //param.width = 500;
                         //param.leftMargin = 20;
                         //param.height = 400;
-                        //param.bottomMargin = 10;
+                        param.bottomMargin = 15;
 
-                        grid.addView(layoutWord[num]/*, param*/);
+                        grid.addView(layoutWord[num], param);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

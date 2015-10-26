@@ -8,6 +8,7 @@ import android.media.Image;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -18,7 +19,7 @@ import com.example.ico.njnd_app.R;
 /**
  * Created by user on 2015-08-15.
  */
-public class ScrollableLinearLayout extends LinearLayout{
+public class ScrollableLinearLayout extends RelativeLayout{
     LayoutInflater mInflater;
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
@@ -31,25 +32,25 @@ public class ScrollableLinearLayout extends LinearLayout{
         TextView title = (TextView)findViewById(R.id.textTitle);
         TextView date = (TextView)findViewById(R.id.textDate);
         TextView writer = (TextView)findViewById(R.id.textWriter);
-        ImageView img = (ImageView)findViewById((R.id.img_content_list));
+        ImageButton img = (ImageButton)findViewById((R.id.img_content_list));
         title.setText(testTitle.toString());
         date.setText(testDate.toString());
         writer.setText(testWriter.toString());
 
-        ButtonInfo btn = new ButtonInfo(context);
+        //ButtonInfo btn = new ButtonInfo(context);
 
-        btn.setBackground(this.getResources().getDrawable(R.mipmap.people_shape));
-        btn.setScaleType(ImageView.ScaleType.FIT_XY);
-        btn.setURL(titleImgURL);
-        btn.setLayoutParams(new MarginLayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-        btn.setMinimumWidth(150);
-//        btn.setMaxHeight(120);
-//        btn.setMinimumHeight(120);
-        btn.setTag(titleImgURL);
-        new DownloadImage(btn).execute();
+        //btn.setBackground(this.getResources().getDrawable(R.mipmap.trans));
+        img.setScaleType(ImageView.ScaleType.FIT_XY);
+        //img.setURL(titleImgURL);
+        //btn.setLayoutParams(new MarginLayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
+        //btn.setMinimumWidth(150);
+        //btn.setMaxHeight(80);
+        //btn.setMaxWidth(80);
+        //btn.setMinimumHeight(120);
+        img.setTag(titleImgURL);
+        new DownloadImage(img).execute();
 
-
-        btn.setOnClickListener(new View.OnClickListener() {
+        img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent in = new Intent();
@@ -59,7 +60,7 @@ public class ScrollableLinearLayout extends LinearLayout{
                 context.startActivity(in);
             }
         });
-        this.addView(btn);
+        //this.addView(img);
     }
 
 }

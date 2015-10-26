@@ -38,21 +38,22 @@ public class ScrollableGridLayout extends RelativeLayout{
         mInflater = LayoutInflater.from(context);
         mInflater.inflate(R.layout.activity_customgridlayout_test, this, true);
 
-        TextView tv = (TextView)findViewById(R.id.textURL);
-        tv.setText(testText.toString());
+        ImageButton img = (ImageButton)findViewById((R.id.img_menu));
+       // TextView tv = (TextView)findViewById(R.id.textURL);
+       // tv.setText(testText.toString());
 
-        ButtonInfo btn = new ButtonInfo(context);
-        btn.setBackground(this.getResources().getDrawable(R.mipmap.content_menu_cell_img));
-        btn.setScaleType(ImageView.ScaleType.FIT_XY);
-        btn.setURL(testText.toString());
-        btn.setLayoutParams(new MarginLayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-        btn.setMinimumWidth(150);
-        btn.setMaxHeight(120);
-        btn.setMinimumHeight(120);
-        btn.setTag(cateImgURL);
-        new DownloadImage(btn).execute();
+       // ButtonInfo btn = new ButtonInfo(context);
+        //img.setBackground(this.getResources().getDrawable(R.mipmap.content_menu_cell_img));
+        //btn.setScaleType(ImageView.ScaleType.FIT_XY);
+        //img.setURL(testText.toString());
+        //btn.setLayoutParams(new MarginLayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
+       // btn.setMinimumWidth(150);
+       // btn.setMaxHeight(120);
+       // btn.setMinimumHeight(120);
+        img.setTag(cateImgURL);
+        new DownloadImage(img).execute();
 
-        btn.setOnClickListener(new View.OnClickListener() {
+        img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent in = new Intent();
@@ -62,7 +63,7 @@ public class ScrollableGridLayout extends RelativeLayout{
                 context.startActivity(in);
             }
         });
-        this.addView(btn);
+        //this.addView(btn);
     }
 
 }

@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:id = "@+id/layout_grid_view">
 
-    <ImageView
+    <ImageButton
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:id="@+id/img_content_list"
