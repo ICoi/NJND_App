@@ -64,9 +64,8 @@
         android:layout_height="wrap_content"
         android:text="ContentPage"
         android:id="@+id/btn_content_list_goNext"
-        android:layout_gravity="right"
-        android:layout_marginBottom="44dp"
         android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"
         android:layout_toLeftOf="@+id/btn_content_list_goBefore"
         android:layout_toStartOf="@+id/btn_content_list_goBefore" />
 
