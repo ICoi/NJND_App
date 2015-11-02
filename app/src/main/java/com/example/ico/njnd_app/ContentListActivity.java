@@ -97,7 +97,7 @@ public class ContentListActivity extends Activity {
 
                     }
 
-                    Toast.makeText(getApplicationContext(), object.getString("status"), Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(getApplicationContext(), object.getString("status"), Toast.LENGTH_SHORT).show();
                     LinearLayout grid = (LinearLayout)findViewById(R.id.linearLayout_activity_content_list);
                     for(int num = 0;num<jArry.length(); num++) {
                         layoutWord[num] = new ScrollableLinearLayout(ContentListActivity.this, "com.example.ico.njnd_app.ContentPageActivity",titles[num],dateTime[num],editor[num],contentIDx[num],titleImgURL[num]);
@@ -122,13 +122,6 @@ public class ContentListActivity extends Activity {
             }
         });
 
-
-
-
-
-//        setOnClickListener();
-
-        testToGoNext();
     }
 
     @Override
@@ -165,15 +158,4 @@ public class ContentListActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void testToGoNext(){
-        Button btn = (Button)findViewById(R.id.btn_content_list_goNext);
-        btn.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                Intent i = new Intent(ContentListActivity.this, ContentPageActivity.class);
-                startActivity(i);
-
-            }
-        });
-    }
 }

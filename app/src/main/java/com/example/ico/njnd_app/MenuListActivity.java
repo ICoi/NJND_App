@@ -69,7 +69,7 @@ public class MenuListActivity extends Activity {
                     getcateURL = new String[jArry.length()];
                     for (int i = 0; i < jArry.length(); i++) {
                         JSONObject inObject = jArry.getJSONObject(i);
-                        Toast.makeText(getApplicationContext(), inObject.getString("cate_name"), Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(getApplicationContext(), inObject.getString("cate_name"), Toast.LENGTH_SHORT).show();
                         getname[i] = inObject.getString("cate_name");
                         getcateID[i] = inObject.getString("cate_idx");
                         getcateURL[i] = inObject.getString("cate_url");
@@ -87,7 +87,7 @@ public class MenuListActivity extends Activity {
                         linear.addView(layoutWord[num], param);
                     }
 
-                    Toast.makeText(getApplicationContext(), object.getString("status"), Toast.LENGTH_SHORT).show();
+                 //   Toast.makeText(getApplicationContext(), object.getString("status"), Toast.LENGTH_SHORT).show();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

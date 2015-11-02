@@ -42,7 +42,7 @@ public class MainActivity extends Activity {
         List<Cookie> cookies = myCookieStore.getCookies();
 
         if(cookies.isEmpty()){
-            Toast.makeText(getApplicationContext(), "no cookies", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getApplicationContext(), "no cookies", Toast.LENGTH_SHORT).show();
 
             final Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
@@ -64,7 +64,7 @@ public class MainActivity extends Activity {
             */
 
         }else{
-            Toast.makeText(getApplicationContext(),"HAS cookies // " + cookies.get(0).getName() + " - " + cookies.get(0).getValue(),Toast.LENGTH_SHORT).show();
+           // Toast.makeText(getApplicationContext(),"HAS cookies // " + cookies.get(0).getName() + " - " + cookies.get(0).getValue(),Toast.LENGTH_SHORT).show();
             final Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override

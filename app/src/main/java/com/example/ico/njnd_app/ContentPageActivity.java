@@ -4,12 +4,15 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,9 +39,14 @@ public class ContentPageActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_content_page);
+        Intent intent = getIntent();
+        String id = intent.getStringExtra("IDX");
 
+        // text view 에 스크롤 기능 추가
+        TextView tv = (TextView)findViewById(R.id.content_page_text);
+        tv.setMovementMethod(new ScrollingMovementMethod());
         AsyncHttpClient client = new AsyncHttpClient();
-        client.get("http://namjungnaedle123.cafe24.com:3000/app/board/view?contentID=2", new AsyncHttpResponseHandler() {
+        client.get("http://namjungnaedle123.cafe24.com:3000/app/board/view?contentID="+id, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int i, Header[] headers, byte[] bytes) {
                 try {
@@ -60,7 +68,9 @@ public class ContentPageActivity extends Activity {
                         tv.setText(pageDatas.getJSONObject(nowPage).getString("content"));
 
                         ImageView imgView = (ImageView)findViewById(R.id.img_content_image);
-                        imgView.setImageBitmap(download_image(pageDatas.getJSONObject(nowPage).getString("img")));
+                        imgView.setTag(pageDatas.getJSONObject(nowPage).getString("img"));
+                        new DownloadImage(imgView).execute();
+                       // imgView.setImageBitmap(download_image(pageDatas.getJSONObject(nowPage).getString("img")));
 
 
                     }else{
@@ -104,6 +114,9 @@ public class ContentPageActivity extends Activity {
                     try {
                         TextView tv = (TextView) findViewById(R.id.content_page_text);
                         tv.setText(pageDatas.getJSONObject(--nowPage).getString("content"));
+                        ImageView imgView = (ImageView)findViewById(R.id.img_content_image);
+                        imgView.setTag(pageDatas.getJSONObject(--nowPage).getString("img"));
+                        new DownloadImage(imgView).execute();
                     }catch(JSONException e){
                         e.printStackTrace();
                     }
@@ -127,6 +140,9 @@ public class ContentPageActivity extends Activity {
                     try {
                         TextView tv = (TextView) findViewById(R.id.content_page_text);
                         tv.setText(pageDatas.getJSONObject(++nowPage).getString("content"));
+                        ImageView imgView = (ImageView)findViewById(R.id.img_content_image);
+                        imgView.setTag(pageDatas.getJSONObject(++nowPage).getString("img"));
+                        new DownloadImage(imgView).execute();
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -135,22 +151,6 @@ public class ContentPageActivity extends Activity {
         });
     }
 
-    private Bitmap download_image(String urlStr){
-        try{
-            URL url = new URL(urlStr);
-            URLConnection conn = url.openConnection();
-            conn.connect();
-            InputStream is = conn.getInputStream();
-            BufferedInputStream bis = new BufferedInputStream(is);
-            Bitmap bm = BitmapFactory.decodeStream(bis);
-            bis.close();
-            is.close();
-            return bm;
-
-        }catch(Exception e){
-            return null;
-        }
-    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -164,5 +164,41 @@ public class ContentPageActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+}
+
+class DownloadImage extends AsyncTask<ImageView, Void, Bitmap> {
+
+    ImageView Ib = null;
+    ImageView imgbtn;
+    public DownloadImage(ImageView imgbtn){
+        this.imgbtn = imgbtn;
+    }
+
+    @Override
+    protected Bitmap doInBackground(ImageView... imageButton) {
+        this.Ib = imgbtn;
+        return download_Image((String)Ib.getTag());
+
+    }
+    @Override
+    protected  void onPostExecute(Bitmap result){
+        Ib.setImageBitmap(result);
+    }
+
+    private Bitmap download_Image(String tag) {
+        Bitmap bm = null;
+        try{
+            URL url = new URL(tag);
+            URLConnection conn = url.openConnection();
+            conn.connect();
+            InputStream is = conn.getInputStream();
+            BufferedInputStream bis = new BufferedInputStream(is);
+            bm = BitmapFactory.decodeStream(bis);
+            bis.close();
+            is.close();
+            return bm;
+        }catch (Exception e){}
+        return bm;
     }
 }
