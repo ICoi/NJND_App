@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     android:orientation="vertical">
 
     <ImageView
@@ -27,9 +28,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Category"
+        android:textStyle="bold"
+        android:textSize="20dp"
         android:id="@+id/categoryLabel"
         android:layout_marginLeft="24dp"
         android:layout_marginStart="24dp"
+        android:layout_marginBottom="5dp"
         android:layout_above="@+id/scrollView2"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -44,7 +48,7 @@
         android:layout_below="@id/img_menu_list_title_bar"
         android:layout_alignLeft="@id/categoryLabel"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="80dp"
+        android:layout_marginBottom="20dp"
         android:layout_alignStart="@id/image_menu_list_title">
 
         <LinearLayout

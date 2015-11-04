@@ -37,7 +37,8 @@ public class ScrollableGridLayout extends RelativeLayout{
         super(context);
         mInflater = LayoutInflater.from(context);
         mInflater.inflate(R.layout.activity_customgridlayout_test, this, true);
-
+        TextView tv = (TextView)findViewById(R.id.cateTitle);
+        tv.setText(name);
         ImageButton img = (ImageButton)findViewById((R.id.img_menu));
        // TextView tv = (TextView)findViewById(R.id.textURL);
        // tv.setText(testText.toString());

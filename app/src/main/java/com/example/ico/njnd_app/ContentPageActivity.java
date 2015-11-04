@@ -107,7 +107,7 @@ public class ContentPageActivity extends Activity {
             public void onClick(View v){
                 // TODO
                 if(nowPage == 0){
-                    Toast.makeText(getApplicationContext(),"Here is first page", Toast.LENGTH_SHORT).show();
+                 //   Toast.makeText(getApplicationContext(),"Here is first page", Toast.LENGTH_SHORT).show();
                     finish();
 
                 }else{
@@ -115,7 +115,7 @@ public class ContentPageActivity extends Activity {
                         TextView tv = (TextView) findViewById(R.id.content_page_text);
                         tv.setText(pageDatas.getJSONObject(--nowPage).getString("content"));
                         ImageView imgView = (ImageView)findViewById(R.id.img_content_image);
-                        imgView.setTag(pageDatas.getJSONObject(--nowPage).getString("img"));
+                        imgView.setTag(pageDatas.getJSONObject(nowPage).getString("img"));
                         new DownloadImage(imgView).execute();
                     }catch(JSONException e){
                         e.printStackTrace();
@@ -128,20 +128,14 @@ public class ContentPageActivity extends Activity {
             @Override
             public void onClick(View v) {
                 // TODO
-                if (nowPage == pageCnt - 1) {
+                if (nowPage >= pageCnt) {
                     Toast.makeText(getApplicationContext(), "Here is Last page", Toast.LENGTH_SHORT).show();
-                    /*
-                Intent i = new Intent(ContentPageActivity.this,ReplyPageActivity.class);
-                startActivity(i);
-
-                     */
-
                 } else {
                     try {
                         TextView tv = (TextView) findViewById(R.id.content_page_text);
                         tv.setText(pageDatas.getJSONObject(++nowPage).getString("content"));
                         ImageView imgView = (ImageView)findViewById(R.id.img_content_image);
-                        imgView.setTag(pageDatas.getJSONObject(++nowPage).getString("img"));
+                        imgView.setTag(pageDatas.getJSONObject(nowPage).getString("img"));
                         new DownloadImage(imgView).execute();
                     } catch (JSONException e) {
                         e.printStackTrace();

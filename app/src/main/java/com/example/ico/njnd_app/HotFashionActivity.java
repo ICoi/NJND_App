@@ -1,6 +1,7 @@
 package com.example.ico.njnd_app;
 
 import android.app.Activity;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -22,8 +23,13 @@ public class HotFashionActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hot_fashion);
         webview = (WebView)findViewById(R.id.webview);
-
-        webview.setWebViewClient(new WebClient()); // ÀÀ¿ëÇÁ·Î±×·¥¿¡¼­ Á÷Á¢ url Ã³¸®
+        WebSettings s = webview.getSettings();
+        s.setJavaScriptEnabled(true);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN){
+            s.setAllowUniversalAccessFromFileURLs(true);
+            s.setAllowFileAccessFromFileURLs(true);
+        }
+        webview.setWebViewClient(new WebClient()); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î±×·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ url Ã³ï¿½ï¿½
         WebSettings set = webview.getSettings();
         set.setJavaScriptEnabled(true);
         webview.loadUrl("http://namjungnaedle123.cafe24.com:3000/web/hot_fashion_list");

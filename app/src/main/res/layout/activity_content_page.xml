@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     android:weightSum="1">
 
 
@@ -33,11 +34,12 @@
         android:layout_gravity="center_horizontal" />
 
     <ImageView
-        android:layout_width="350dp"
-        android:layout_height="350dp"
+        android:layout_width="280dp"
+        android:layout_height="280dp"
         android:id="@+id/img_content_image"
         android:layout_below="@id/text_content_title"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
         android:background="@mipmap/ic_launcher"
         android:layout_centerHorizontal="true" />
 
@@ -67,6 +69,8 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@id/img_content_image"
         android:layout_above="@id/btn_content_page_goNext"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:autoText="false"
         android:maxLines="10"
         android:lines="10"

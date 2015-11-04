@@ -91,7 +91,7 @@ public class ContentListActivity extends Activity {
                         likes[i] = inObject.getString("likes");
                         titles[i] = inObject.getString("title");
                         titleImgURL[i] = inObject.getString("titleImg");
-                        editor[i] = "test"; //inObject.getString("editor");
+                        editor[i] = inObject.getString("editor");
                         dateTime[i] = inObject.getString("dateTime");
                         contentIDx[i] = inObject.getString("contentIdx");
 
@@ -102,11 +102,7 @@ public class ContentListActivity extends Activity {
                     for(int num = 0;num<jArry.length(); num++) {
                         layoutWord[num] = new ScrollableLinearLayout(ContentListActivity.this, "com.example.ico.njnd_app.ContentPageActivity",titles[num],dateTime[num],editor[num],contentIDx[num],titleImgURL[num]);
                         LinearLayout.LayoutParams param =  new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                        //param.width = 500;
-                        //param.height = 200;
-                        //param.width = 500;
-                        //param.leftMargin = 20;
-                        //param.height = 400;
+
                         param.bottomMargin = 15;
 
                         grid.addView(layoutWord[num], param);

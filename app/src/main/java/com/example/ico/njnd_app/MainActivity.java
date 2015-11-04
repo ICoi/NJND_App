@@ -51,6 +51,7 @@ public class MainActivity extends Activity {
                     // Do something after 3s = 3000ms
                     Intent i = new Intent(MainActivity.this, SignUpActivity.class);
                     startActivity(i);
+                    finish();
                 }
             },1000);
             // move intent to Sign up page
@@ -72,6 +73,7 @@ public class MainActivity extends Activity {
                     // Do something after 3s = 3000ms
                     Intent i = new Intent(MainActivity.this, MenuListActivity.class);
                     startActivity(i);
+                    finish();
                 }
             }, 3000);
         }
